@@ -5,10 +5,11 @@
     @if(count($recipes) > 0)
         @foreach($recipes as $recipe)
             <div class = "card card-body bg-light">
-                <h3 class = "card-title">{{$recipe->title}}</h3>
+            <h3 class = "card-title"><a href = "/recipes/{{$recipe->id}}">{{$recipe->title}}</a></h3>
                 <small>Created on {{$recipe->created_at}}</small>
             </div>
         @endforeach
+        {{$recipes->links()}}
     @else
         <p>No recipes found</p>
     @endif

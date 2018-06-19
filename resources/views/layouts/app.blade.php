@@ -7,10 +7,10 @@
     <link rel = "stylesheet" href = "{{asset('css/app.css')}}">
     <title>{{config('app.name', 'Recipe101')}}</title>
   </head>
-  <body>
+  <body class = "bg-white">
     @include('inc.navbar')
 
-    <div class = "container">
+    <div class = "container" style = "margin-top: 1em">
       @yield('content')
     </div>
   </body>

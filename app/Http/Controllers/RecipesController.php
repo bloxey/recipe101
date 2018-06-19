@@ -14,7 +14,10 @@ class RecipesController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::all();
+        //$recipes = Recipe::all();
+        //$recipes = Recipe::orderBy('title', desc)->get();
+
+        $recipes = Recipe::orderBy('title', 'desc')->paginate(1);
         return view('recipes.index')->with('recipes', $recipes);
     }
 
@@ -47,7 +50,8 @@ class RecipesController extends Controller
      */
     public function show($id)
     {
-        //
+        $recipe = Recipe::find($id);
+        return view('recipes.show')->with('recipe', $recipe);
     }
 
     /**
