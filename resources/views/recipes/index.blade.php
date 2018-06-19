@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2>Recipes</h2>
+    <h1>All Recipes</h1>
     @if(count($recipes) > 0)
         @foreach($recipes as $recipe)
             <div class = "card card-body bg-light">

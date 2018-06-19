@@ -17,7 +17,7 @@ class RecipesController extends Controller
         //$recipes = Recipe::all();
         //$recipes = Recipe::orderBy('title', desc)->get();
 
-        $recipes = Recipe::orderBy('title', 'desc')->paginate(1);
+        $recipes = Recipe::orderBy('title', 'asc')->paginate(10);
         return view('recipes.index')->with('recipes', $recipes);
     }
 
@@ -28,7 +28,7 @@ class RecipesController extends Controller
      */
     public function create()
     {
-        //
+        return view('recipes.create');
     }
 
     /**
