@@ -48,6 +48,7 @@ class RecipesController extends Controller
         $recipe = new Recipe;
         $recipe->title = $request->input('title');
         $recipe->body = $request->input('body');
+        $recipe->user_id = auth()->user()->id;
         $recipe->save();
 
         return redirect('/recipes')->with('success', 'Recipe Published');

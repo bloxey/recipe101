@@ -26,3 +26,6 @@ Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 
 Route::resource('recipes', 'RecipesController');
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index');
