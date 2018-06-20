@@ -73,7 +73,8 @@ class RecipesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $recipe = Recipe::find($id);
+        return view('recipes.edit')->with('recipe', $recipe);
     }
 
     /**
@@ -85,7 +86,13 @@ class RecipesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Publish recipe
+        $recipe = Recipe::find($id);
+        $recipe->title = $request->input('title');
+        $recipe->body = $request->input('body');
+        $recipe->save();
+
+        return redirect('/recipes')->with('success', 'Recipe Updated');
     }
 
     /**
@@ -96,6 +103,8 @@ class RecipesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $recipe = Recipe::find($id);
+        $recipe-> delete();
+        return redirect('/recipes')->with('success', 'Recipe Removed');
     }
 }
