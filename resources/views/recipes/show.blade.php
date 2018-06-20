@@ -2,6 +2,7 @@
 
 @section('content')
     <h2>{{$recipe->title}}</h2>
+    <img style = "width: 100%;" src = "/storage/cover_images/{{$recipe->cover_img}}"/>
 <small>Created on {{$recipe->created_at}} by {{$recipe->user->name}}</small>
     <div>
         {!!$recipe->body!!}

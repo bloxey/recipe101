@@ -51,14 +51,32 @@ class RecipesController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'cover_img' => 'image|nullable|max:1999' //max size 1999, cuz Apache servers might reject anaything bigger
         ]);
+
+        // Handle image
+        if($request->hasFile('cover_img')) {
+            // Get filename eith extensions
+            $fileNameWithExt = $request->file('cover_img')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('cover_img')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            // Upload image
+            $path = $request->file('cover_img')->storeAs('public/cover_images', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
 
         // Publish recipe
         $recipe = new Recipe;
         $recipe->title = $request->input('title');
         $recipe->body = $request->input('body');
         $recipe->user_id = auth()->user()->id;
+        $recipe->cover_img = $fileNameToStore;
         $recipe->save();
 
         return redirect('/recipes')->with('success', 'Recipe Published');
