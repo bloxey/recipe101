@@ -6,7 +6,7 @@
         @foreach($recipes as $recipe)
             <div class = "card card-body bg-light">
             <h3 class = "card-title"><a href = "/recipes/{{$recipe->id}}">{{$recipe->title}}</a></h3>
-                <small>Created on {{$recipe->created_at}}</small>
+                <small>Created on {{$recipe->created_at}} by {{$recipe->user->name}}</small>
             </div>
         @endforeach
         {{$recipes->links()}}

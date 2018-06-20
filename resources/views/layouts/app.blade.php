@@ -24,6 +24,9 @@
       @include('inc.messages')
       @yield('content')
       <hr>
+      <div class = "text-center text-muted">
+        <small>Jānis Tone jt17017 2018</small>
+      </div>
     </main>
   </div>
 
