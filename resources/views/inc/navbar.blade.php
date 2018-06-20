@@ -10,7 +10,10 @@
     <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                     <a class="nav-link text-white" href="/about">About</a>
-                </li>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link text-white" href="/recipes/create">Create Recipe</a>
+            </li>
             <li class="nav-item">
                     <a class="nav-link text-white" href="/signup">Sign Up</a>
             </li>
